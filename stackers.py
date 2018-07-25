@@ -1,6 +1,8 @@
+import time
 from sense_hat import SenseHat
 from pygame.locals import *
 import pygame
+
 
 sense = SenseHat()
 sense.clear()
@@ -12,12 +14,25 @@ class stack():
 		self.gaming = True
 
 	def startGame(self):
+		x = 0
+		y = 7
 		pygame.time.set_timer(USEREVENT +1, 800)
 		while self.gaming:
-			for event in pygame.event.get():
-				if event.type == KEYDOWN:
-					sense.set_pixel(1, 6, (0, 0, 255))
+			#for event in pygame.event.get():
+			while True:				
+				sense.set_pixel(x, y, (0, 0, 255))
+				x = x + 1				
+				if x > 1:
+					sense.set_pixel(x-2, y, (0, 0, 0))						
+					if x == 8:
+						x = 0						
+				time.sleep(.05)	
+				sense.set_pixel(7, y, (0, 0, 0))	
 				
+				 
+					
+			
+			
 					
 
 if __name__ == "__main__":
