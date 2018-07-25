@@ -21,6 +21,8 @@ class stack():
 		while self.gaming:
 			for event in pygame.event.get():
 				if  event.type == KEYDOWN:
+					if y == -1:
+						exit()
 					if x == 0:
 						x = 8
 						sense.set_pixel(x-1, y, (0, 255, 255))					
@@ -30,7 +32,9 @@ class stack():
 						sense.set_pixel(x-1, y, (0, 255, 255))
 						y = y - 1
 						 										
-				else:							
+				else:
+					if y == -1:
+						exit()							
 					sense.set_pixel(x, y, (0, 0, 255))
 					time.sleep(speed)
 					sense.set_pixel(x, y, (0, 0, 0))	
